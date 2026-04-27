@@ -1,13 +1,31 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-  // to see how IntelliJ IDEA suggests fixing it.
-  IO.println(String.format("Hello and welcome!"));
+import tiposCuentas.CuentaAhorros;
+import tiposCuentas.CuentaBancaria;
+import tiposCuentas.CuentaCorriente;
+import tiposCuentas.CuentaInversion;
 
-  for (int i = 1; i <= 5; i++) {
-    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-    IO.println("i = " + i);
-  }
+public class Main {
+    public static void main(String[] args) {
+        CuentaBancaria cuentaAhorros = new CuentaAhorros(001, "Robinson Salamanca", 1500, 1, 200);
+        CuentaBancaria cuentaCorriente = new CuentaCorriente(002, "Fabián Palacio", 1700, 2, 100);
+        CuentaBancaria cuentaInversion = new CuentaInversion(003, "Julieth Gonzalez", 2000, 10, 15, 5);
+
+        cuentaAhorros.describir();
+        cuentaCorriente.describir();
+        cuentaInversion.describir();
+
+        System.out.println(cuentaAhorros.describir() + cuentaAhorros.calcularComision());
+        System.out.println(cuentaCorriente.describir() + cuentaCorriente.calcularComision());
+        System.out.println(cuentaInversion.describir() + cuentaInversion.calcularComision());
+
+        cuentaAhorros.realizarRetiro(500.0);
+        cuentaCorriente.realizarRetiro(500.0);
+        cuentaInversion.realizarRetiro(500.0);
+
+        System.out.println(cuentaAhorros.getSaldo());
+        System.out.println(cuentaCorriente.getSaldo());
+        System.out.println(cuentaInversion.getSaldo());
+
+    }
 }
+// Se usó CuentaBancaria para usar polimorfismo
+// porque una misma variable puede referenciar diferentes tipos de cuenta y cada una ejecuta su propio comportamiento.

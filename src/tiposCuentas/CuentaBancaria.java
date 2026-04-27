@@ -1,15 +1,17 @@
 package tiposCuentas;
 
-public class Base {
+public class CuentaBancaria {
     private int numeroCuenta;
-    private String nombreTitular;
-    private double saldoActual;
+    private String titular;
+    private double saldo;
 
-    public Base(int numeroCuenta, String nombreTitular, double saldoActual) {
+    public CuentaBancaria(int numeroCuenta, String titular, double saldo) {
         this.numeroCuenta = numeroCuenta;
-        this.nombreTitular = nombreTitular;
-        this.saldoActual = saldoActual;
+        this.titular = titular;
+        this.saldo = saldo;
     }
+
+
 
     public int getNumeroCuenta() {
         return numeroCuenta;
@@ -20,18 +22,29 @@ public class Base {
     }
 
     public String getNombreTitular() {
-        return nombreTitular;
+        return titular;
     }
 
     public void setNombreTitular(String nombreTitular) {
-        this.nombreTitular = nombreTitular;
+        this.titular = nombreTitular;
     }
 
-    public double getSaldoActual() {
-        return saldoActual;
+    public double getSaldo() {
+        return saldo;
     }
 
-    public void setSaldoActual(double saldoActual) {
-        this.saldoActual = saldoActual;
+    void setSaldo(double nuevoSaldo) {
+        this.saldo = nuevoSaldo;
+    }
+
+    public String describir(){
+        return "Cuenta: " + numeroCuenta+ " - Titular: "+ titular +" - Saldo: $" + saldo;
+    }
+    public double calcularComision(){
+        return 0.0;
+    }
+
+    public void realizarRetiro(double monto){
+        setSaldo(getSaldo()-monto);
     }
 }
